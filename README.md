@@ -1,5 +1,7 @@
 # Lyle-flask
 Step by step studing
+This is my first coding work. Python Flask and GitHub
+
 Flasky
 ======
 
