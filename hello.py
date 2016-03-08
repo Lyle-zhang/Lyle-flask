@@ -1,11 +1,14 @@
 from flask import Flask, render_template
 from flask.ext.script import Manager
 from flask.ext.bootstrap import Bootstrap
+from datetime import datetime
+from flask.ext.moment import Moment
 
 app = Flask(__name__)
 
 manager = Manager(app)
 bootstrap = Bootstrap(app)
+moment = Moment(app)
 
 
 @app.errorhandler(404)
@@ -20,12 +23,12 @@ def internal_server_error(e):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', current_time=datetime.utcnow())
 
 
 @app.route('/user/<name>')
 def user(name):
-    return render_template('user.html', name=name)
+    return render_template('user.html', current_time=datetime.utcnow(), name=name)
 
 
 if __name__ == '__main__':
